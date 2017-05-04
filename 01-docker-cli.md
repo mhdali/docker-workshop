@@ -159,6 +159,5 @@ docker run -it ubuntu:14.04 bash
 apt-get update
 apt-get install nginx redis
 docker commit <CONTAINER_NAME> docker.workshop.local/ali-app1
-docker login docker.workshop.local
-docker push docker.workshop.local/ali-app1
+docker run docker.worksho.local/ali-app1 redis-cli -h <ali-ip> GET DOCKERWS
 ```
