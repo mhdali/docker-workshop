@@ -34,7 +34,7 @@ docker ps -a
 ### Daemonize
 
 ```
-docker run -it -d debian bash
+docker run -it -d nginx
 ```
 
 ### Exec
