@@ -1,0 +1,19 @@
+version: "2"
+services:
+  wp:
+    build: .
+    ports:
+      - 80:80
+    links:
+      - db:mysql.local
+#    volumes:
+#      - ./data/wp/wp-config.php:/var/www/localhost/htdocs/wp/wp-config.php
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=dockerws
+      - MYSQL_PASSWORD=password
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes

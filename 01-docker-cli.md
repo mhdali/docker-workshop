@@ -47,23 +47,23 @@ ps axjf
 ### Start/Stop/Restart/Auto Restart
 
 ```
-docker start <first_container_name>
+docker start <container_name>
 docker ps -a
-docker restart <first_container_ID>
-docker stop <first_container_name>
+docker restart <container_ID>
+docker stop <container_name>
 ```
 
 ### Naming
 
 ```
-docker rename pedantic_bassi debian
+docker rename <container_name> debian
 ```
 
 ### Logs
 
 ```
 docker logs --tail=10 -f <container_name>
-docker logs <container> | grep <search>
+docker logs <container_name> | grep <search>
 ```
 
 ### Copy files
@@ -97,7 +97,7 @@ docker search redis
 ### Pull
 
 ```
-docker pull redis
+docker pull busybox
 ```
 
 ### Use private registry
@@ -113,20 +113,20 @@ docker exec -it debian bash
 apt-get update
 apt-get install ruby
 ruby --version
-docker commit debian <yourname>-ruby:debian
+docker commit <container_name> <yourname>-ruby
 docker images
 ```
 
 ### Tag
 
 ```
-dodcker tag <yourname>-ruby:debian docker-workshop.local/<yourname>-ruby:debian
+dodcker tag <yourname>-ruby <yourname>-ruby:<ruby_version>
 ```
 
 ### Push
 
 ```
-docker push docker-workshop.local/<yourname>-ruby:debian
+docker push mhdali/dockerws-ruby:2.1
 ```
 
 
@@ -146,7 +146,8 @@ docker rm -f debian
 
 ```
 docker images
-docker rmi docker-workshop.local/<yourname>-ruby:debian
+docker rmi <yourname>-ruby
+docker rmi <yourname>-ruby:<ruby_version>
 ```
 
 
@@ -155,9 +156,10 @@ docker rmi docker-workshop.local/<yourname>-ruby:debian
 Create an image from your container
 
 ```
-docker run -it ubuntu:14.04 bash
+docker run -it ubuntu:16.04 bash
 apt-get update
-apt-get install nginx redis
-docker commit <CONTAINER_NAME> docker.workshop.local/ali-app1
-docker run docker.worksho.local/ali-app1 redis-cli -h <ali-ip> GET DOCKERWS
+apt-get install redis-tools
+docker commit <container_name> dockerws/redis-tools
+docker run dockerws/redis-tools redis-cli -h 192.168.20.13 info
+docker run dockerws/redis-tools redis-cli -h 192.168.20.13 GET DOCKERWS
 ```

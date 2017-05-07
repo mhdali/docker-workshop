@@ -1,7 +1,22 @@
-
+# Advanced 
 
 ## inspect container
-## kill container
+
+```
+docker inspect wordpress_wp_1
+```
+
+## signals
+
+```
+docker kill -s HUP wordpress_wp_1
+```
+
+## PID
+
 - pid
 - uts
-- signal handling
+
+- sysdig
+- rancheros
+- privlieged

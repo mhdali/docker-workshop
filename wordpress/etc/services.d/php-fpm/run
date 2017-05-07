@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv sh
+set -e
+
+exec 2>&1
+exec php-fpm7 -F
